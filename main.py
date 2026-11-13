@@ -10,7 +10,7 @@ from models import Task
 app = FastAPI()
 
 # Frontend directory
-FRONTEND_DIR = Path(file).resolve().parent / "frontend"
+FRONTEND_DIR = Path(__file__).resolve().parent / "frontend"
 
 
 # Open frontend from the main URL
