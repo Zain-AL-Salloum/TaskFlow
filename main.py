@@ -1,10 +1,22 @@
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from database import get_connection
 from models import Task
 
 app = FastAPI()
+
+# Frontend directory
+FRONTEND_DIR = Path(file).resolve().parent / "frontend"
+
+
+# Open frontend from the main URL
+@app.get("/")
+def home():
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 # Get all tasks
@@ -126,9 +138,9 @@ def toggle_task(task_id: int):
     return {"message": "Task status updated successfully"}
 
 
-# Frontend
+# Frontend static files
 app.mount(
     "/app",
-    StaticFiles(directory="frontend", html=True),
+    StaticFiles(directory=str(FRONTEND_DIR), html=True),
     name="frontend"
 )
