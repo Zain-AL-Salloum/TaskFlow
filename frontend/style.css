@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{font-family:'DM Sans',sans-serif;color:#edf2fb;background:#0b1220;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -20%,#243754 0%,#111c2e 38%,#0b1220 75%);padding:28px 18px 40px}
+.shell{width:min(760px,100%);margin:0 auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 48px}
+.brand{display:flex;align-items:center;gap:11px;font:800 20px Manrope,sans-serif;letter-spacing:-.7px}
+.brand-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#7c9cff;color:#101827;font-size:19px}
+.brand-light{color:#91aaff}
+.status{font-size:12px;color:#a9b6c9;background:#182438;border:1px solid #2a3a53;border-radius:30px;padding:8px 12px}
+.status i{display:inline-block;width:7px;height:7px;background:#55d6a0;border-radius:50%;margin-right:7px}
+.intro{padding:0 5px 30px}
+.eyebrow{font-size:10px;letter-spacing:2.2px;font-weight:700;color:#8ea8d8;margin:0 0 14px}
+h1{font:800 clamp(38px,8vw,60px)/1.06 Manrope,sans-serif;letter-spacing:-2.7px;margin:0}
+h1 span{color:#91aaff}
+.subtitle{color:#aab7ca;font-size:15px;margin:16px 0 0}
+.panel{background:#f8faff;color:#172235;border-radius:22px;padding:25px;box-shadow:0 24px 70px #0005}
+.add-form{display:flex;gap:10px}
+input{min-width:0;flex:1;border:1px solid #dce3ee;background:white;border-radius:12px;padding:15px 16px;font:14px 'DM Sans';outline:none;color:#172235}
+input:focus{border-color:#809cff;box-shadow:0 0 0 3px #809cff25}
+.add-button{border:0;border-radius:12px;padding:0 18px;background:#243653;color:white;font:600 13px 'DM Sans';cursor:pointer;white-space:nowrap}
+.add-button:hover{background:#354e75}
+.add-button span{font-size:18px;vertical-align:-1px;margin-right:5px}
+.list-heading{display:flex;justify-content:space-between;align-items:center;margin:29px 1px 13px}
+h2{font:800 19px Manrope;margin:0;letter-spacing:-.5px}
+.list-heading p{margin:4px 0 0;color:#8290a4;font-size:12px}
+.refresh-button{width:34px;height:34px;border:1px solid #e0e6ef;background:white;border-radius:10px;color:#52637b;font-size:20px;cursor:pointer}
+.task-list{list-style:none;margin:0;padding:0}
+.task-item{display:flex;align-items:center;gap:12px;padding:14px 4px;border-top:1px solid #e9edf4}
+.task-id{flex:0 0 30px;height:30px;display:grid;place-items:center;background:#edf2ff;color:#6178b5;border-radius:9px;font-size:11px;font-weight:700}
+.task-title{flex:1;min-width:0;font-size:14px;overflow-wrap:anywhere}
+.actions{display:flex;gap:6px}
+.action{border:1px solid #e2e7ef;background:white;color:#58677e;border-radius:8px;padding:7px 9px;font:600 11px 'DM Sans';cursor:pointer}
+.action:hover{background:#eef2f8}
+.action.delete:hover{color:#bd4553;border-color:#f0cbd0;background:#fff5f6}
+.message{font-size:12px;min-height:0;color:#b33c4c}
+.message:not(:empty){padding:0 2px 8px}
+.empty-state{text-align:center;padding:36px 10px 24px;color:#77859a}
+.empty-icon{font-size:25px;color:#829aff}
+.empty-state h3{font:700 15px Manrope;color:#26364e;margin:10px 0 5px}
+.empty-state p{font-size:12px;margin:0}
+footer{text-align:center;color:#73839c;font-size:11px;padding:22px 0}
+button:disabled{opacity:.55;cursor:wait}
+@media(max-width:520px){body{padding:16px 12px 28px}.topbar{padding-bottom:38px}.panel{padding:17px;border-radius:18px}.add-form{flex-direction:column}.add-button{height:46px}.task-item{gap:8px}.action{padding:7px;font-size:10px}.task-title{font-size:13px}}
+/* =========================
+   TASK ITEMS
+========================= */
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: #f8faff;
+    border: 1px solid #e5eaf5;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(20, 40, 90, 0.08);
+}
+
+/* Task checkbox */
+.task-checkbox {
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    accent-color: #2563eb;
+}
+
+/* Task ID */
+.task-id {
+    color: #8a94aa;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Task title */
+.task-title {
+    flex: 1;
+    color: #202b45;
+    font-size: 15px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+/* Completed task */
+.task-item.completed {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+/* Buttons container */
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* General button style */
+.task-actions button,
+.save-button,
+.cancel-button {
+    border: none;
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Edit button */
+.edit-button,
+.save-button {
+    background: #e8efff;
+    color: #2563eb;
+}
+
+.edit-button:hover,
+.save-button:hover {
+    background: #d5e2ff;
+}
+
+/* Delete button */
+.delete-button {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.delete-button:hover {
+    background: #fecaca;
+}
+
+/* Cancel button */
+.cancel-button {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.cancel-button:hover {
+    background: #d1d5db;
+}
+
+/* Edit input */
+.edit-input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.edit-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .task-item {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .task-title {
+        min-width: 120px;
+    }
+
+    .task-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
